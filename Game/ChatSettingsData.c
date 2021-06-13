@@ -1,11 +1,11 @@
 class ChatSettingsData {
 	
-    ref SchanaColour ColourDirect      ;
+    ref SchanaColour ColourDirect;
     ref SchanaColour ColourDirectPlayer;
-   	ref SchanaColour ColourGlobal      ;
+   	ref SchanaColour ColourGlobal;
     ref SchanaColour ColourGlobalPlayer;
-    ref SchanaColour ColourServer      ;
-    ref SchanaColour ColourAlert       ;
+    ref SchanaColour ColourServer;
+    ref SchanaColour ColourAlert;
     
     // ref array<ref RoleSettingsData> roles = new RoleSettingsData("Staff", playerIds, defaultColourAlert);
     // ref array<ref RoleSettingsData> m_Roles;
@@ -20,10 +20,10 @@ class ChatSettingsData {
 		ColourServer       = new SchanaColour(colourServer);
 		ColourAlert        = new SchanaColour(colourAlert);
 
-        // ref array<ref string> playerIds;
-        // playerIds.Insert("76561197997664497");
-        // "Staff", playerIds, defaultColourAlert
+        array<string> playerIds = {
+            "76561197997664497"
+        };
         Roles = new array<ref RoleSettingsData>;
-        Roles.Insert(new RoleSettingsData())
+        Roles.Insert(new RoleSettingsData("Staff", playerIds, ColourAlert))
     }
 }   

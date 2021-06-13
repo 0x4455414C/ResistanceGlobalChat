@@ -3,7 +3,7 @@ class RoleSettingsData {
     protected ref array<string> Members;
     protected ref SchanaColour  Colour;
 
-    void RoleSettings(string roleName = "Staff", array<string> playerIds = null, SchanaColour roleColour = null){
+    void RoleSettingsData(string roleName = "Staff", array<string> playerIds = null, SchanaColour roleColour = null){
         // "Staff", playerIds, defaultColourAlert
         if (!roleName){
             Name = "Staff"
