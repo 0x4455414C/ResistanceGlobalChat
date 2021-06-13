@@ -1,36 +1,45 @@
 class RoleSettingsData {
-    protected string            m_RoleName;
-    protected ref array<string>    m_PlayerIds;
-    protected ref SchanaColour  m_RoleColour;
+    protected string            Name;
+    protected ref array<string> Members;
+    protected ref SchanaColour  Colour;
 
     void RoleSettings(string roleName = "Staff", array<string> playerIds = null, SchanaColour roleColour = null){
         // "Staff", playerIds, defaultColourAlert
-        m_RoleName = roleName;
-        m_PlayerIds = playerIds;
-        m_RoleColour = roleColour;
+        if (!roleName){
+            Name = "Staff"
+        }
+        if (!playerIds){
+            Members.Insert("76561197997664497");
+        }
+        if (!roleColour){
+            Colour = new SchanaColour("255 0 0");
+        }
+        Name = roleName;
+        Members = playerIds;
+        Colour = roleColour;
     }
 
     string getRoleName(){
-        return m_RoleName;
+        return Name;
     }
 
     void setRoleName(string name){
-        m_RoleName = name;
+        Name = name;
     }
 
     array<string> getPlayerIds(){
-        return m_PlayerIds;
+        return Members;
     }
 
     void setPlayerIds(array<string> ids){
-        m_PlayerIds = ids;
+        Members = ids;
     } 
 
     SchanaColour getRoleColour(){
-        return m_RoleColour;
+        return Colour;
     }
 
     void setRoleColour(SchanaColour colour){
-        m_RoleColour = colour;
+        Colour = colour;
     }
 }

@@ -9,16 +9,16 @@ modded class MissionGameplay extends MissionBase {
 	override void OnMissionStart (){
 		super.OnMissionStart ();
 		Print ("[SchanaChat] Requesting settings from server");
-		GetRPCManager ().SendRPC ("SchanaChat", "SchanaChatSettingsRPC", new Param1< SchanaModGlobalChatServerSettings >( NULL ), true, NULL);
+		GetRPCManager ().SendRPC ("SchanaChat", "SchanaChatSettingsRPC", new Param1< ResistanceChatSettings >( NULL ), true, NULL);
 	}
 	
 	void SchanaChatSettingsRPC ( CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target ) {
-		Param1< SchanaModGlobalChatServerSettings > data  //Player ID, Icon
+		Param1< ResistanceChatSettings > data  //Player ID, Icon
 		if ( !ctx.Read ( data ) ) return;
 		
 		Print ("[SchanaChat] Receiving settings from server");
 		
-		g_SchanaModGlobalChatServerSettings = data.param1;
+		g_ResistanceChatSettings = data.param1;
 	}
 
 	

@@ -3,7 +3,7 @@ modded class MissionServer extends MissionBase {
         super.OnInit ();
 		Print ("[SchanaChat] OnInit");
 		// GetSchanaModGlobalChatServerSettings ();
-		ResistanceChatSettings.getConfig();
+		ResistanceChatSettings();
 		GetRPCManager ().AddRPC ( "SchanaChat", "SchanaChatSettingsRPC", this, SingeplayerExecutionType.Both );
 	}
 	
@@ -11,7 +11,7 @@ modded class MissionServer extends MissionBase {
 		PlayerIdentity RequestedBy = PlayerIdentity.Cast(sender);
 		if (RequestedBy){
 			Print ("[SchanaChat] Settings Requested By " + RequestedBy.GetId ());
-			GetRPCManager ().SendRPC ("SchanaChat", "SchanaChatSettingsRPC", new Param1< SchanaModGlobalChatServerSettings >( GetSchanaModGlobalChatServerSettings () ), true, RequestedBy);
+			GetRPCManager ().SendRPC ("SchanaChat", "SchanaChatSettingsRPC", new Param1< ResistanceChatSettings >( ResistanceChatSettings () ), true, RequestedBy);
 		}
 	}
 	
