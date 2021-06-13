@@ -29,11 +29,11 @@ class RoleSettingsData {
         Name = name;
     }
 
-    array<string> getPlayerIds(){
+    array<string> getMembers(){
         return Members;
     }
 
-    void setPlayerIds(array<string> ids){
+    void setMembers(array<string> ids){
         Members = ids;
     } 
 
