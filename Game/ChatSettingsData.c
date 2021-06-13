@@ -25,7 +25,7 @@ class ChatSettingsData {
         };
 
         Roles = new array<RoleSettingsData>;
-        Roles.Insert(new RoleSettingsData("Staff", playerIds, ColourAlert))
+        Roles.Insert(new RoleSettingsData("Staff", playerIds, ColourAlert));
     }
 
     ref array<RoleSettingsData> getRoles(){
