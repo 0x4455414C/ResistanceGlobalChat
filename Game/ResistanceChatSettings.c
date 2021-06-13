@@ -54,19 +54,19 @@ class ResistanceChatSettings {
         }
     }
 
-    protected ChatSettingsData getConfig(){
-        if (!m_ChatSettingsData){
-            loadConfig();
-        }
-        return m_ChatSettingsData;
-    }
-
     protected void makeConfig(){
         // ref array<ref string> playerIds;
         // playerIds.Insert("76561197997664497");
         // ref array<ref RoleSettingsData> roles = new RoleSettingsData("Staff", playerIds, defaultColourAlert);
         m_ChatSettingsData = new ChatSettingsData(defaultColourDirect, defaultColourGlobal, defaultColourServer, defaultColourAlert);
         JsonFileLoader<ChatSettingsData>.JsonSaveFile(profilePath + dir + "/" + file, m_ChatSettingsData);
+    }
+
+    ChatSettingsData getConfig(){
+        if (!m_ChatSettingsData){
+            loadConfig();
+        }
+        return m_ChatSettingsData;
     }
 
     //* Getters
@@ -97,6 +97,10 @@ class ResistanceChatSettings {
 
     array<RoleSettingsData> GetRoles(){
         return m_ChatSettingsData.getRoles();
+    }
+
+    string GetTest () {
+        return "Hello World";
     }
 
     //* Debug
