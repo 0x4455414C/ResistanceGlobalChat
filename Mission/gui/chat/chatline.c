@@ -1,4 +1,5 @@
 modded class ChatLine {
+    TextWidget m_RoleWidget;
     void ChatLine (Widget root_widget) {
         m_RootWidget = GetGame ().GetWorkspace ().CreateWidgets ("SchanaModGlobalChat/GUI/layouts/chatline.layout", root_widget);
 
@@ -46,8 +47,9 @@ modded class ChatLine {
         } else if (channel & CCAdmin) {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         } else if (channel == 0 || channel & CCDirect) {
-            // if ()
+            // if () {
             // m_RoleWidget.SetText.
+            // s}   
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
             SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer ());
@@ -56,7 +58,7 @@ modded class ChatLine {
         }
     }
 	
-	protected void SetSchanaColour (int tcolour, int pcolour, int rcolour = null)
+	protected void SetSchanaColour (int tcolour, int pcolour, int rcolour = 0)
 	{
 		m_NameWidget.SetColor (pcolour);
 		m_TextWidget.SetColor (tcolour);
