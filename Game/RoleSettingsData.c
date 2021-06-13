@@ -6,7 +6,7 @@ class RoleSettingsData {
     void RoleSettingsData(string roleName = "Staff", array<string> playerIds = null, SchanaColour roleColour = null){
         // "Staff", playerIds, defaultColourAlert
         if (!roleName){
-            Name = "Staff"
+            Name = "Staff";
         }
         if (!playerIds){
             Members = {
