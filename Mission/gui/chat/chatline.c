@@ -2,14 +2,17 @@ modded class ChatLine {
     void ChatLine (Widget root_widget) {
         m_RootWidget = GetGame ().GetWorkspace ().CreateWidgets ("SchanaModGlobalChat/GUI/layouts/chatline.layout", root_widget);
 
+        m_RoleWidget = TextWidget.Cast (m_RootWidget.FindAnyWidget ("ChatItemSenderRoleWidget"));
         m_NameWidget = TextWidget.Cast (m_RootWidget.FindAnyWidget ("ChatItemSenderWidget"));
         m_TextWidget = TextWidget.Cast (m_RootWidget.FindAnyWidget ("ChatItemTextWidget"));
 
+        m_RoleWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
         m_NameWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
         m_TextWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
     }
 
     void SchanaUpdateSize () {
+        m_RoleWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
         m_NameWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
         m_TextWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
     }
@@ -43,6 +46,8 @@ modded class ChatLine {
         } else if (channel & CCAdmin) {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         } else if (channel == 0 || channel & CCDirect) {
+            // if ()
+            // m_RoleWidget.SetText.
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
             SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer ());
@@ -51,10 +56,11 @@ modded class ChatLine {
         }
     }
 	
-	protected void SetSchanaColour (int tcolour, int pcolour)
+	protected void SetSchanaColour (int tcolour, int pcolour, int rcolour = null)
 	{
-		//TODO HERE ADD RCOLOUR
 		m_NameWidget.SetColor (pcolour);
 		m_TextWidget.SetColor (tcolour);
+		//TODO HERE ADD RCOLOUR
+        m_RoleWidget.SetColor (rcolour);
 	}
 }
