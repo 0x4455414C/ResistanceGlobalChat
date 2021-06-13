@@ -11,6 +11,21 @@ modded class PlayerBase extends ManBase {
                     Print(sender.GetPlainId());
 					//Use Plain ID here to identify admins
 				    //76561197997664497
+                    // string test = ResistanceChatSettings().GetTest();
+                    // Print(test);
+
+                    string role;
+                    // array<RoleSettingsData> Roles = ResistanceChatSettings().GetRoles();
+                    array<RoleSettingsData> Roles = ResistanceChatSettings().getConfig().getRoles();
+                    for (int x=0; x<Roles.Count();x++){
+                        array<string> Members = Roles[x].getMembers();
+                        for (int y=0; y<Members.Count();y++){
+                            if (sender.GetPlainId() == Members[y]){
+                                role = Roles[x].getRoleName();
+                            }
+                        }
+                    }
+                    
                     string text = name + " : " + chatParams.param1;
 
                     ref array<Man> players = new array<Man> ();
