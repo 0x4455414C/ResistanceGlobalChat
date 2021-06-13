@@ -95,6 +95,12 @@ class ResistanceChatSettings {
         return ColourAlert.Get ();
     }
 
+    array<RoleSettingsData> GetRoles(){
+        return m_ChatSettingsData.getRoles();
+    }
+
+    //* Debug
+
     void Debug (){
 		Print ("[SchanaChat] ColourDirect");
 		Print (ColourDirect.Debug ());

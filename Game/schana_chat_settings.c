@@ -9,7 +9,7 @@ class SchanaModGlobalChatSettings {
     ref SchanaColour ColorSample = new SchanaColour(DEFAULTColorServer);
     ref SchanaColour ColorDirect;
     ref SchanaColour ColorDirectPlayer;
-   	ref SchanaColour ColorGlobal;
+	 ref SchanaColour ColorGlobal;
     ref SchanaColour ColorGlobalPlayer;
     ref SchanaColour ColorServer;
     ref SchanaColour ColorAlert;

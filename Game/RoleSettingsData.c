@@ -9,7 +9,9 @@ class RoleSettingsData {
             Name = "Staff"
         }
         if (!playerIds){
-            Members.Insert("76561197997664497");
+            Members = {
+                "76561197997664497"
+            };
         }
         if (!roleColour){
             Colour = new SchanaColour("255 0 0");
