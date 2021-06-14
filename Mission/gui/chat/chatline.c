@@ -25,17 +25,36 @@ modded class ChatLine {
         super.Set (params);
         int channel = params.param1;
 		int cindex = params.param3.IndexOf (" : ");
+        int sindex = params.param3.IndexOf ("|-|");
+
 		string theName = params.param2;
 		string theText = params.param3;
+        string theRole = null;
 		if (params.param2 == "" && cindex > 0){
-			theName = params.param3;
-			theName = theName.Substring (0, cindex);
+			theName = params.param3;            
+            if (sindex > 0){
+                theRole = theName;
+				theName = theName.Substring ((sindex+3), cindex);
+				theRole = theRole.Substring (0, sindex);
+              
+                Print(theRole);
+                // TODO MORE HERE
+            } else {
+				theName = theName.Substring (0, cindex);
+			}
+            
+            // TRIM String
 			cindex = cindex + 3;
 			int len = theText.Length () - cindex;
 			theText = theText.Substring (cindex,len);
+
+          
 		}
         if (channel & CCSystem) {
             if (params.param2 == "" && params.param3.IndexOf (" : ") > 0) {
+                if (theRole!=null){
+                    m_RoleWidget.setText (theRole + " ");
+                }
 				if (theName != theText){
 					m_NameWidget.SetText (theName + ": ");
 				}
@@ -47,12 +66,12 @@ modded class ChatLine {
         } else if (channel & CCAdmin) {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         } else if (channel == 0 || channel & CCDirect) {
-            // if () {
-            // m_RoleWidget.SetText.
-            // s}   
+            if (theRole){
+                m_RoleWidget.SetText (theRole + " ");
+            }
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
-            SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer ());
+            SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), GetResistanceChatSettings().FindRoleByName().GetColour(); );
         } else {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         }
