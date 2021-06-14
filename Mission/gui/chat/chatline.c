@@ -34,13 +34,13 @@ modded class ChatLine {
 			theName = params.param3;            
             if (sindex > 0){
                 theRole = theName;
+				theName = theName.Substring (0, cindex);
 				theName = theName.Substring ((sindex+3), cindex);
 				theRole = theRole.Substring (0, sindex);
               
                 Print(theRole);
                 // TODO MORE HERE
             }
-			theName = theName.Substring (0, cindex);
 			cindex = cindex + 3;
 			int len = theText.Length () - cindex;
 			theText = theText.Substring (cindex,len);
