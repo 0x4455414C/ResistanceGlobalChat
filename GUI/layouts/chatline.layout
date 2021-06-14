@@ -11,7 +11,7 @@ WrapSpacerWidgetClass ChatItemWidget {
  Margin 0
  "Size To Content H" 1
  {
-   TextWidgetClass ChatItemSenderRoleWidget {
+  TextWidgetClass ChatItemSenderRoleWidget {
    clipchildren 0
    size 0.2 1
    valign center_ref
@@ -19,7 +19,7 @@ WrapSpacerWidgetClass ChatItemWidget {
    vexactpos 1
    hexactsize 0
    vexactsize 0
-   font "gui/fonts/sdf_metronbook72"
+   font "gui/fonts/sdf_metronlight72"
    "shadow size" 10
    "exact text" 1
    "exact text size" 20
