@@ -1,9 +1,7 @@
 class RoleSettingsData {
-    static vector red     = "255 1 1";
-
     protected string            Name;
     protected ref array<string> Members;
-    protected ref SchanaColour  Colour = new SchanaColour(red);
+    protected ref SchanaColour  Colour = new SchanaColour("163 5 0");
 
     void RoleSettingsData(string roleName = "Staff", array<string> playerIds = null, SchanaColour roleColour = null){
         if (playerIds.Count() == 0){
@@ -12,7 +10,7 @@ class RoleSettingsData {
             };
         }
         if (roleColour == null){
-            Colour = new SchanaColour("255 1 1");
+            Colour = new SchanaColour("163 5 0");
         }
         Name = roleName;
         Members = playerIds;
