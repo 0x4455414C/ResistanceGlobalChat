@@ -4,7 +4,7 @@ modded class MissionGameplay extends MissionBase {
 	
 	void MissionGameplay (){
         GetRPCManager ().AddRPC ("SchanaChat", "SchanaChatSettingsRPC", this, SingleplayerExecutionType.Both);
-		}
+    }
 	
 	override void OnMissionStart (){
 		super.OnMissionStart ();
