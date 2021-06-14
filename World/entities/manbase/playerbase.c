@@ -9,10 +9,7 @@ modded class PlayerBase extends ManBase {
                     Param1<string> chatParams;
                     if (!ctx.Read (chatParams)) return;
                     string name = sender.GetName ();
-					//Use Plain ID here to identify admins
-				    //76561197997664497
-                    // string test = ResistanceChatSettings().GetTest();
-                    // Print(test);
+
                     ResistanceChatSettings settings = GetResistanceChatSettings();
                     array<RoleSettingsData> serverRoles = GetResistanceChatSettings().GetRoles();
                     for (int x=0; x<serverRoles.Count();x++){
@@ -21,19 +18,19 @@ modded class PlayerBase extends ManBase {
                         array<string> roleMembers = role.GetMembers();
                         for (int y=0; y<roleMembers.Count();y++){
                             if (sender.GetPlainId() == roleMembers[y]){
-                                Print(roleName);
                                 ServerRole = roleName;
                             }
                         }
                     }
                     string text;
                     if (ServerRole){
-                        text = "["+ServerRole+"] " + name + " : " + chatParams.param1;
+                        text = ServerRole+"|-|" + name + " : " + chatParams.param1;
                     }
                     else {
                         text = name + " : " + chatParams.param1;
                     }
-                    Print(text);
+                    // Print(text);
+
                     ref array<Man> players = new array<Man> ();
                     GetGame ().GetPlayers (players);
 
