@@ -1,4 +1,5 @@
 modded class PlayerBase extends ManBase {
+    static string ServerRole = "";
     static const int SCHANA_RPC_CHAT_CLIENT_SEND_GLOBAL = -44301;
 
     override void OnRPC (PlayerIdentity sender, int rpc_type, ParamsReadContext ctx) {
@@ -8,26 +9,31 @@ modded class PlayerBase extends ManBase {
                     Param1<string> chatParams;
                     if (!ctx.Read (chatParams)) return;
                     string name = sender.GetName ();
-                    Print(sender.GetPlainId());
 					//Use Plain ID here to identify admins
 				    //76561197997664497
                     // string test = ResistanceChatSettings().GetTest();
                     // Print(test);
-
-                    string role;
-                    // array<RoleSettingsData> Roles = ResistanceChatSettings().GetRoles();
-                    array<RoleSettingsData> Roles = ResistanceChatSettings().getConfig().getRoles();
-                    for (int x=0; x<Roles.Count();x++){
-                        array<string> Members = Roles[x].getMembers();
-                        for (int y=0; y<Members.Count();y++){
-                            if (sender.GetPlainId() == Members[y]){
-                                role = Roles[x].getRoleName();
+                    ResistanceChatSettings settings = GetResistanceChatSettings();
+                    array<RoleSettingsData> serverRoles = GetResistanceChatSettings().GetRoles();
+                    for (int x=0; x<serverRoles.Count();x++){
+						RoleSettingsData role = serverRoles[x];
+						string roleName = role.GetName();
+                        array<string> roleMembers = role.GetMembers();
+                        for (int y=0; y<roleMembers.Count();y++){
+                            if (sender.GetPlainId() == roleMembers[y]){
+                                Print(roleName);
+                                ServerRole = roleName;
                             }
                         }
                     }
-                    
-                    string text = name + " : " + chatParams.param1;
-
+                    string text;
+                    if (ServerRole){
+                        text = "["+ServerRole+"] " + name + " : " + chatParams.param1;
+                    }
+                    else {
+                        text = name + " : " + chatParams.param1;
+                    }
+                    Print(text);
                     ref array<Man> players = new array<Man> ();
                     GetGame ().GetPlayers (players);
 
