@@ -91,7 +91,7 @@ class ResistanceChatSettings {
         return Roles;
     }
 
-    RoleSettingsData GetRoleByName(string name){
+    RoleSettingsData FindRoleByName(string name){
         for (int i=0; i<Roles.Count();i++){
             if (Roles[i].GetName() == name){
                 return Roles[i];
