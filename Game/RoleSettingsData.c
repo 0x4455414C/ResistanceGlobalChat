@@ -37,7 +37,7 @@ class RoleSettingsData {
         return Colour;
     }
 
-    void GetColour(SchanaColour colour){
+    void SetColour(SchanaColour colour){
         Colour = colour;
     }
 }
