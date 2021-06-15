@@ -20,11 +20,7 @@ class ResistanceChatSettings {
     static vector defaultColourDirect        = "255 255 255";   // white
     static vector defaultColourGlobal        = "1 255 238";     // lt blue
     static vector defaultColourServer        = "255 89 1";      // orange
-    static vector defaultColourAlert         = "163 5 0";       // red
-    static ref array<string> defaultIds      = { "76561197997664497" };
-    static ref RoleSettingsData defaultRole  = new RoleSettingsData("Staff", defaultIds, new SchanaColour(defaultColourAlert));
-
-   
+    static vector defaultColourAlert         = "163 5 0";       // red   
 
     protected ref SchanaColour ColourDirect        = new SchanaColour (defaultColourDirect);
     protected ref SchanaColour ColourDirectPlayer  = new SchanaColour (defaultColourDirect);
