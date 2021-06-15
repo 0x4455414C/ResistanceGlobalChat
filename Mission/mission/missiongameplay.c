@@ -1,8 +1,6 @@
 modded class MissionGameplay extends MissionBase {
     private bool m_SchanaChatChannelIsGlobal = true;
 	
-    protected ref array<RoleSettingsData> g_ResistanceRoles = new array<RoleSettingsData>;
-	
 	void MissionGameplay (){
         GetRPCManager ().AddRPC ("SchanaChat", "SchanaChatSettingsRPC", this, SingleplayerExecutionType.Both);
         GetRPCManager ().AddRPC ("SchanaChat", "SchanaRoleColoursRPC", this, SingleplayerExecutionType.Both);
