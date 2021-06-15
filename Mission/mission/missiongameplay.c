@@ -22,7 +22,7 @@ modded class MissionGameplay extends MissionBase {
 		Print ("[SchanaChat] Receiving settings from server");
 		
 		g_ResistanceChatSettings = data.param1;
-        Print(g_ResistanceChatSettings);
+        // Print(g_ResistanceChatSettings);
 	}
 
     void SchanaRoleColoursRPC (CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target ) {
@@ -30,8 +30,10 @@ modded class MissionGameplay extends MissionBase {
 		if ( !ctx.Read ( data ) ) return;
 		
 		Print ("[SchanaChat] Receiving roles from server");
-		
 		g_ResistanceRoles = data.param1;
+		// for (int i=0;i<g_ResistanceRoles.Count();i++){
+		// 	Print(g_ResistanceRoles[i].GetName());
+		// }
 	}
 
 	
