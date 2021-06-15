@@ -53,18 +53,20 @@ modded class ChatLine {
 				}
 				m_TextWidget.SetText (theText);
                 //GetSchanaModGlobalChatSettings().GetColorAlert()
-                RoleSettingsData role;
                 ref array<RoleSettingsData> m_Roles = g_ResistanceRoles;
+				RoleSettingsData roleMatched = null;
                 for (int i=0;i<m_Roles.Count();i++){
-                    if (m_Roles.GetName() == theRole){
-                        role = m_Roles[i];
+                    RoleSettingsData role = m_Roles[i];
+                    string roleName = role.GetName();
+                    if (roleName == theRole){
+                        roleMatched = role;
                     }
                 }
-                if (role != null && role.GetName()!=""){
-                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), role.GetColour());
+                if (roleMatched != null){
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), roleMatched.GetColour());
                 } else {
                     theRole="";
-                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), 0);
                 }
                 // SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
             } else {
@@ -80,16 +82,20 @@ modded class ChatLine {
 			m_TextWidget.SetText (theText);
             // GetSchanaModGlobalChatSettings().GetColorAlert()
             
-               for (int j=0;j<m_Roles.Count();j++){
-                    if (m_Roles.GetName() == theRole){
-                        role = m_Roles[j];
+                ref array<RoleSettingsData> m_RolesAlt = g_ResistanceRoles;
+				RoleSettingsData roleMatchedAlt = null;
+                for (int j=0;j<m_RolesAlt.Count();j++){
+                    RoleSettingsData roleAlt = m_RolesAlt[j];
+                    string roleNameAlt = roleAlt.GetName();
+                    if (roleNameAlt == theRole){
+                        roleMatchedAlt = roleAlt;
                     }
                 }
-                if (role.GetName()!=""){
-                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), role.GetColour());
+                if (roleMatchedAlt != null){
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), roleMatchedAlt.GetColour());
                 } else {
                     theRole="";
-                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), 0);
                 }
             //  SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
         } else {
@@ -102,6 +108,10 @@ modded class ChatLine {
 		m_NameWidget.SetColor (pcolour);
 		m_TextWidget.SetColor (tcolour);
 		//TODO HERE ADD RCOLOUR
-        m_RoleWidget.SetColor (rcolour);
+        if (rcolour == 0){
+            m_RoleWidget.Show(false);
+        } else {
+            m_RoleWidget.SetColor (rcolour);
+        }
 	}
 }
