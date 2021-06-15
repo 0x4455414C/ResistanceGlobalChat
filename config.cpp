@@ -1,22 +1,23 @@
 class CfgPatches
 {
-	class SchanaModGlobalChat
-	{
-		requiredAddons[] = { "SchanaModGlobalChatDefine" };
+	class TheResistanceChat {
+		requiredAddons[] = {
+			"SchanaModGlobalChatDefine"
+		};
 	};
 };
 
 class CfgMods
 {
-	class SchanaModGlobalChat
+	class TheResistanceChat
 	{
-		name = "SchanaModGlobalChat";
+		name = "TheResistanceChat";
 		action = "https://github.com/schana/dayz-mod-global-chat";
+		credits = "99.99% Schana, 0.01% DUAL";
 		author = "schana";
 		type = "mod";
-		inputs = "SchanaModGlobalChat/Data/Inputs.xml";
-		dependencies[] =
-		{
+		inputs = "TheResistanceChat/Data/Inputs.xml";
+		dependencies[] = {
 			"Game",
 			"Mission",
 			"World"
@@ -25,23 +26,20 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				files[] =
-				{
-					"SchanaModGlobalChat/Game"
+				files[] = {
+					"TheResistanceChat/Game"
 				};
 			};
 			class missionScriptModule
 			{
-				files[] =
-				{
-					"SchanaModGlobalChat/Mission"
+				files[] = {
+					"TheResistanceChat/Mission"
 				};
 			};
 			class worldScriptModule
 			{
-				files[] =
-				{
-					"SchanaModGlobalChat/World"
+				files[] = {
+					"TheResistanceChat/World"
 				};
 			};
 		};
