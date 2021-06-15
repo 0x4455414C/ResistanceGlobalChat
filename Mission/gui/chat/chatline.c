@@ -1,7 +1,7 @@
 modded class ChatLine {
     TextWidget m_RoleWidget;
     void ChatLine (Widget root_widget) {
-        m_RootWidget = GetGame ().GetWorkspace ().CreateWidgets ("SchanaModGlobalChat/GUI/layouts/chatline.layout", root_widget);
+        m_RootWidget = GetGame ().GetWorkspace ().CreateWidgets ("TheResistanceChat/GUI/layouts/chatline.layout", root_widget);
 
         m_RoleWidget = TextWidget.Cast (m_RootWidget.FindAnyWidget ("ChatItemSenderRoleWidget"));
         m_NameWidget = TextWidget.Cast (m_RootWidget.FindAnyWidget ("ChatItemSenderWidget"));
