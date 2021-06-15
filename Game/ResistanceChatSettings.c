@@ -10,6 +10,8 @@ static ref ResistanceChatSettings GetResistanceChatSettings () {
     return g_ResistanceChatSettings;
 }
 
+ref array<RoleSettingsData> g_ResistanceRoles;
+
 class ResistanceChatSettings {
 	
     protected static string profilePath = "$profile:";
