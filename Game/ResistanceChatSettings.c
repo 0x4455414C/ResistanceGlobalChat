@@ -10,8 +10,6 @@ static ref ResistanceChatSettings GetResistanceChatSettings () {
     return g_ResistanceChatSettings;
 }
 
-ref array<RoleSettingsData> g_ResistanceRoles;
-
 class ResistanceChatSettings {
 	
     protected static string profilePath = "$profile:";
@@ -124,3 +122,5 @@ class ResistanceChatSettings {
 		Print (ColourAlert.Debug ());
 	}
 }
+
+ref array<RoleSettingsData> g_ResistanceRoles;
