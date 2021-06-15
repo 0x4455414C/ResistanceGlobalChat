@@ -53,7 +53,20 @@ modded class ChatLine {
 				}
 				m_TextWidget.SetText (theText);
                 //GetSchanaModGlobalChatSettings().GetColorAlert()
-                SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
+                RoleSettingsData role;
+                ref array<RoleSettingsData> m_Roles = g_ResistanceRoles;
+                for (int i=0;i<m_Roles.Count();i++){
+                    if (m_Roles.GetName() == theRole){
+                        role = m_Roles[i];
+                    }
+                }
+                if (role != null && role.GetName()!=""){
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), role.GetColour());
+                } else {
+                    theRole="";
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
+                }
+                // SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
             } else {
                 SetColour (GetSchanaModGlobalChatSettings ().GetColorAlert ());
             }
@@ -66,7 +79,19 @@ modded class ChatLine {
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
             // GetSchanaModGlobalChatSettings().GetColorAlert()
-            SetSchanaColour (GetSchanaModGlobalChatSettings().GetColorDirect(), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer(), GetSchanaModGlobalChatSettings().GetColorAlert());
+            
+               for (int j=0;j<m_Roles.Count();j++){
+                    if (m_Roles.GetName() == theRole){
+                        role = m_Roles[j];
+                    }
+                }
+                if (role.GetName()!=""){
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), role.GetColour());
+                } else {
+                    theRole="";
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
+                }
+            //  SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
         } else {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         }
