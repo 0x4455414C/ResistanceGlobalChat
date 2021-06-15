@@ -20,6 +20,9 @@ modded class MissionServer extends MissionBase {
 		PlayerIdentity RequestedBy = PlayerIdentity.Cast(sender);
 		if (RequestedBy){
 			Print ("[SchanaChat] Roles Requested By " + RequestedBy.GetId ());
+			//  for (int i=0;i<GetResistanceChatSettings ().GetRoles ().Count();i++){
+			// 	Print(GetResistanceChatSettings ().GetRoles ()[i].GetName());
+			// }
 			GetRPCManager ().SendRPC ("SchanaChat", "SchanaRoleColoursRPC", new Param1< array<RoleSettingsData> >( GetResistanceChatSettings ().GetRoles () ), true, RequestedBy);
 		}	
 	}	
