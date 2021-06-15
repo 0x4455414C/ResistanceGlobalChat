@@ -35,7 +35,7 @@ modded class ChatLine {
             theName = theName.Substring (0, cindex);
             if (sindex > 0){
                 theRole = theName;
-				theName = theName.Substring ((sindex+3), cindex);
+				theName = theName.SubstringInverted (theName, 0, (sindex+3));
 				theRole = theRole.Substring (0, sindex);
             }
 			cindex = cindex + 3;
@@ -52,7 +52,8 @@ modded class ChatLine {
 					m_NameWidget.SetText (theName + ": ");
 				}
 				m_TextWidget.SetText (theText);
-                SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (),  GetSchanaModGlobalChatSettings().GetColorAlert());
+                //GetSchanaModGlobalChatSettings().GetColorAlert()
+                SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
             } else {
                 SetColour (GetSchanaModGlobalChatSettings ().GetColorAlert ());
             }
@@ -64,6 +65,7 @@ modded class ChatLine {
             }
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
+            // GetSchanaModGlobalChatSettings().GetColorAlert()
             SetSchanaColour (GetSchanaModGlobalChatSettings().GetColorDirect(), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer(), GetSchanaModGlobalChatSettings().GetColorAlert());
         } else {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
