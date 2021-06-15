@@ -32,9 +32,9 @@ modded class ChatLine {
         string theRole = "";
 		if (params.param2 == "" && cindex > 0){
 			theName = params.param3;            
+            theName = theName.Substring (0, cindex);
             if (sindex > 0){
                 theRole = theName;
-				theName = theName.Substring (0, cindex);
 				theName = theName.Substring ((sindex+3), cindex);
 				theRole = theRole.Substring (0, sindex);
             }
