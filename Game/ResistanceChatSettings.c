@@ -55,7 +55,7 @@ class ResistanceChatSettings {
     }
 
     void SetRoles(){
-         array<string> playerIds = {
+        array<string> playerIds = {
             "76561197997664497"
         };
 
