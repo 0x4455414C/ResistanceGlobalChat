@@ -20,7 +20,7 @@ class ResistanceChatSettings {
     static vector defaultColourDirect        = "255 255 255";   // white
     static vector defaultColourGlobal        = "1 255 238";     // lt blue
     static vector defaultColourServer        = "255 89 1";      // orange
-    static vector defaultColourAlert         = "163 5 0";       // red   
+    static vector defaultColourAlert         = "163 5 0";       // red 
 
     protected ref SchanaColour ColourDirect        = new SchanaColour (defaultColourDirect);
     protected ref SchanaColour ColourDirectPlayer  = new SchanaColour (defaultColourDirect);
@@ -47,6 +47,7 @@ class ResistanceChatSettings {
         }
 
         // Roles.Insert(new RoleSettingsData("Staff", defaultIds, ColourAlert));
+        SetRoles();
         JsonFileLoader<ResistanceChatSettings>.JsonSaveFile(profilePath + dir + "/" + file, this);
     }
 
@@ -54,7 +55,7 @@ class ResistanceChatSettings {
         array<string> playerIds = {
             "76561197997664497"
         };
-
+        RoleSettingsData defaultRole  = new RoleSettingsData("Staff", playerIds, new SchanaColour(defaultColourAlert));
         Roles.Insert(new RoleSettingsData("Staff", playerIds, ColourAlert));
     }
 
