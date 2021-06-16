@@ -78,6 +78,7 @@ modded class ChatLine {
             if (theRole!=""){
                 m_RoleWidget.SetText ("["+theRole + "] ");
             }
+            //! TODO FIX THE NAME CAP ISSUE
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
             // GetSchanaModGlobalChatSettings().GetColorAlert()
@@ -92,12 +93,14 @@ modded class ChatLine {
                     }
                 }
                 if (roleMatchedAlt != null){
-                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), roleMatchedAlt.GetColour());
+                    // TODO FIX COLOURS HERE
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), roleMatchedAlt.GetColour());
                 } else {
                     theRole="";
-                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), 0);
+                    // TODO FIX COLOURS HERE
+                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), 0);
                 }
-            //  SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorGlobal (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
+            //  SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
         } else {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         }
