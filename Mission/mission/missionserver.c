@@ -27,4 +27,31 @@ modded class MissionServer extends MissionBase {
 		}	
 	}	
 
+	override void InvokeOnConnect(PlayerBase player, PlayerIdentity identity)
+	{
+		super.InvokeOnConnect(player, identity);
+
+		string theRole = "";
+		theRole = player.AttainRole(identity);
+		player.SetRole(theRole);
+    }
+
 }
+
+    string AttainRole(PlayerIdentity sender){
+        ResistanceChatSettings settings = GetResistanceChatSettings();
+        array<ref RoleSettingsData> serverRoles = GetResistanceChatSettings().GetRoles();
+        for (int x=0; x<serverRoles.Count();x++){
+            RoleSettingsData role = serverRoles[x];
+            if (role!=null){
+                string roleName = role.GetName();
+                array<string> roleMembers = role.GetMembers();
+                for (int y=0; y<roleMembers.Count();y++){
+                    if (sender.GetPlainId() == roleMembers[y]){
+                        return roleName;
+                    }
+                }
+            }
+        }
+		  return "";
+    }
