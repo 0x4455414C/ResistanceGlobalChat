@@ -22,13 +22,13 @@ class ResistanceChatSettings {
     static vector defaultColourServer        = "255 89 1";      // orange
     static vector defaultColourAlert         = "163 5 0";       // red 
 
-    protected ref SchanaColour ColourDirect        = new SchanaColour (defaultColourDirect);
-    protected ref SchanaColour ColourDirectPlayer  = new SchanaColour (defaultColourDirect);
-   	protected ref SchanaColour ColourGlobal        = new SchanaColour (defaultColourGlobal);
-    protected ref SchanaColour ColourGlobalPlayer  = new SchanaColour (defaultColourGlobal);
-    protected ref SchanaColour ColourServer        = new SchanaColour (defaultColourServer);
-    protected ref SchanaColour ColourAlert         = new SchanaColour (defaultColourAlert);
-    protected ref array<RoleSettingsData> Roles    = new array<RoleSettingsData>;
+    protected ref SchanaColour ColourDirect         = new SchanaColour (defaultColourDirect);
+    protected ref SchanaColour ColourDirectPlayer   = new SchanaColour (defaultColourDirect);
+   	protected ref SchanaColour ColourGlobal         = new SchanaColour (defaultColourGlobal);
+    protected ref SchanaColour ColourGlobalPlayer   = new SchanaColour (defaultColourGlobal);
+    protected ref SchanaColour ColourServer         = new SchanaColour (defaultColourServer);
+    protected ref SchanaColour ColourAlert          = new SchanaColour (defaultColourAlert);
+    protected ref array<ref RoleSettingsData> Roles = new array<ref RoleSettingsData>;
 
     // TODO GET ROLE COLOUR TO CLIENT FOR WIDGET COLOUR WITHOUT STORING IN CONFIG
 
@@ -85,7 +85,7 @@ class ResistanceChatSettings {
         return ColourAlert.Get ();
     }
 
-    array<RoleSettingsData> GetRoles(){
+    array<ref RoleSettingsData> GetRoles(){
         return Roles;
     }
 
@@ -120,4 +120,4 @@ class ResistanceChatSettings {
 	}
 }
 
-ref array<RoleSettingsData> g_ResistanceRoles;
+ref array<ref RoleSettingsData> g_ResistanceRoles;
