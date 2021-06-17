@@ -1,5 +1,5 @@
 class RoleSettingsData {
-    protected string            Name;
+    protected string Name;
     protected ref array<string> Members;
     protected ref SchanaColour  Colour = new SchanaColour("163 5 0");
 
