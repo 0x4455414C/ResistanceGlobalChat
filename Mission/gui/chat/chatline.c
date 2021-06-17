@@ -1,5 +1,6 @@
 modded class ChatLine {
     TextWidget m_RoleWidget;
+
     void ChatLine (Widget root_widget) {
         m_RootWidget = GetGame ().GetWorkspace ().CreateWidgets ("TheResistanceChat/GUI/layouts/chatline.layout", root_widget);
 
@@ -17,8 +18,6 @@ modded class ChatLine {
         m_NameWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
         m_TextWidget.SetTextExactSize (GetSchanaModGlobalChatSettings ().GetSize ());
     }
-	
-	
 	
     override void Set (ChatMessageEventParams params) {
 		
@@ -53,13 +52,14 @@ modded class ChatLine {
 				}
 				m_TextWidget.SetText (theText);
                 //GetSchanaModGlobalChatSettings().GetColorAlert()
-                ref array<RoleSettingsData> m_Roles = g_ResistanceRoles;
+                ref array<ref RoleSettingsData> m_Roles = g_ResistanceRoles;
+				// array<RoleSettingsData> m_Roles = g_ResistanceChatSettings.GetRoles();
 				RoleSettingsData roleMatched = null;
-                for (int i=0;i<m_Roles.Count();i++){
-                    RoleSettingsData role = m_Roles[i];
-                    string roleName = role.GetName();
+                foreach (RoleSettingsData m_Role:m_Roles){
+                    RoleSettingsData currentRole = m_Role;
+                    string roleName = currentRole.GetName();
                     if (roleName == theRole){
-                        roleMatched = role;
+                        roleMatched = currentRole;
                     }
                 }
                 if (roleMatched != null){
@@ -82,14 +82,13 @@ modded class ChatLine {
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
             // GetSchanaModGlobalChatSettings().GetColorAlert()
-            
-                ref array<RoleSettingsData> m_RolesAlt = g_ResistanceRoles;
+                ref array<ref RoleSettingsData> m_RolesAlt = g_ResistanceRoles;
 				RoleSettingsData roleMatchedAlt = null;
-                for (int j=0;j<m_RolesAlt.Count();j++){
-                    RoleSettingsData roleAlt = m_RolesAlt[j];
-                    string roleNameAlt = roleAlt.GetName();
+                foreach (RoleSettingsData m_RoleAlt : m_RolesAlt){
+                    RoleSettingsData currentRoleAlt = m_RoleAlt;
+                    string roleNameAlt = currentRoleAlt.GetName();
                     if (roleNameAlt == theRole){
-                        roleMatchedAlt = roleAlt;
+                        roleMatchedAlt = currentRoleAlt;
                     }
                 }
                 if (roleMatchedAlt != null){
