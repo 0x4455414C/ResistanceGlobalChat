@@ -10,18 +10,10 @@ modded class PlayerBase extends ManBase {
                     if (!ctx.Read (chatParams)) return;
                     string name = sender.GetName ();
 
-                    ResistanceChatSettings settings = GetResistanceChatSettings();
-                    array<RoleSettingsData> serverRoles = GetResistanceChatSettings().GetRoles();
-                    for (int x=0; x<serverRoles.Count();x++){
-						RoleSettingsData role = serverRoles[x];
-						string roleName = role.GetName();
-                        array<string> roleMembers = role.GetMembers();
-                        for (int y=0; y<roleMembers.Count();y++){
-                            if (sender.GetPlainId() == roleMembers[y]){
-                                ServerRole = roleName;
-                            }
-                        }
+                    if (ServerRole == ""){
+                        checkServerRole(sender);    
                     }
+
                     string text;
                     if (ServerRole){
                         text = ServerRole+"|-|" + name + " : " + chatParams.param1;
@@ -45,5 +37,22 @@ modded class PlayerBase extends ManBase {
         }
 
         super.OnRPC (sender, rpc_type, ctx);
+    }
+
+    void checkServerRole(PlayerIdentity sender){
+        ResistanceChatSettings settings = GetResistanceChatSettings();
+        array<ref RoleSettingsData> serverRoles = GetResistanceChatSettings().GetRoles();
+        for (int x=0; x<serverRoles.Count();x++){
+            RoleSettingsData role = serverRoles[x];
+            if (role!=null){
+                string roleName = role.GetName();
+                array<string> roleMembers = role.GetMembers();
+                for (int y=0; y<roleMembers.Count();y++){
+                    if (sender.GetPlainId() == roleMembers[y]){
+                        ServerRole = roleName;
+                    }
+                }
+            }
+        }
     }
 }
