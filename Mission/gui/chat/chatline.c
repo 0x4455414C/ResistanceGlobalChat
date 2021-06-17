@@ -24,7 +24,8 @@ modded class ChatLine {
         super.Set (params);
         int channel = params.param1;
 		int cindex = params.param3.IndexOf (" : ");
-        int sindex = params.param3.IndexOf ("|-|");
+        // int sindex = params.param3.IndexOf ("|-|");
+        int sindex = params.param3.IndexOf (" # ");
 
 		string theName = params.param2;
 		string theText = params.param3;
@@ -45,7 +46,7 @@ modded class ChatLine {
             if (params.param2 == "" && params.param3.IndexOf (" : ") > 0) {
                 if (theRole!=""){
                     //TODO ONE MORE CHECK IN HERE MAYBE
-                    m_RoleWidget.SetText ("["+theRole + "] ");
+                    m_RoleWidget.SetText ("[" + theRole + "] ");
                 }
 				if (theName != theText){
 					m_NameWidget.SetText (theName + ": ");
@@ -76,30 +77,30 @@ modded class ChatLine {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         } else if (channel == 0 || channel & CCDirect) {
             if (theRole!=""){
-                m_RoleWidget.SetText ("["+theRole + "] ");
+                m_RoleWidget.SetText ("[" + theRole + "] ");
             }
             //! TODO FIX THE NAME CAP ISSUE
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
-            // GetSchanaModGlobalChatSettings().GetColorAlert()
-                ref array<ref RoleSettingsData> m_RolesAlt = g_ResistanceRoles;
-				RoleSettingsData roleMatchedAlt = null;
-                foreach (RoleSettingsData m_RoleAlt : m_RolesAlt){
-                    RoleSettingsData currentRoleAlt = m_RoleAlt;
-                    string roleNameAlt = currentRoleAlt.GetName();
-                    if (roleNameAlt == theRole){
-                        roleMatchedAlt = currentRoleAlt;
-                    }
-                }
-                if (roleMatchedAlt != null){
-                    // TODO FIX COLOURS HERE
-                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), roleMatchedAlt.GetColour());
-                } else {
-                    theRole="";
-                    // TODO FIX COLOURS HERE
-                    SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), 0);
-                }
-            //  SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
+            
+				// RoleSettingsData roleMatchedAlt = null;
+                // ref array<ref RoleSettingsData> m_RolesAlt = g_ResistanceRoles;
+                // foreach (RoleSettingsData m_RoleAlt : m_RolesAlt){
+                //     RoleSettingsData currentRoleAlt = m_RoleAlt;
+                //     string roleNameAlt = currentRoleAlt.GetName();
+                //     if (roleNameAlt == theRole){
+                //         roleMatchedAlt = currentRoleAlt;
+                //     }
+                // }
+                // if (roleMatchedAlt != null){
+                //     // TODO FIX COLOURS HERE
+                //     SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), roleMatchedAlt.GetColour());
+                // } else {
+                //     theRole="";
+                //     // TODO FIX COLOURS HERE
+                //     SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), 0);
+                // }
+             SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
         } else {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
         }
