@@ -23,7 +23,7 @@ modded class MissionServer extends MissionBase {
 			//  for (int i=0;i<GetResistanceChatSettings ().GetRoles ().Count();i++){
 			// 	Print(GetResistanceChatSettings ().GetRoles ()[i].GetName());
 			// }
-			GetRPCManager ().SendRPC ("SchanaChat", "SchanaRoleColoursRPC", new Param1< array<RoleSettingsData> >( GetResistanceChatSettings ().GetRoles () ), true, RequestedBy);
+			GetRPCManager ().SendRPC ("SchanaChat", "SchanaRoleColoursRPC", new Param1< array<ref RoleSettingsData> >( GetResistanceChatSettings ().GetRoles () ), true, RequestedBy);
 		}	
 	}	
 
