@@ -16,7 +16,9 @@ modded class PlayerBase extends ManBase {
 
                     string text;
                     if (ServerRole){
-                        text = ServerRole+"|-|" + name + " : " + chatParams.param1;
+                        // MAYBE USE A HASH IN HERE INSTEAD
+                        // text = ServerRole+"|-|" + name + " : " + chatParams.param1;
+                        text = ServerRole+" # " + name + " : " + chatParams.param1;
                     }
                     else {
                         text = name + " : " + chatParams.param1;
