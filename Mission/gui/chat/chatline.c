@@ -82,24 +82,7 @@ modded class ChatLine {
             //! TODO FIX THE NAME CAP ISSUE
 			m_NameWidget.SetText (theName + ": ");
 			m_TextWidget.SetText (theText);
-            
-				// RoleSettingsData roleMatchedAlt = null;
-                // ref array<ref RoleSettingsData> m_RolesAlt = g_ResistanceRoles;
-                // foreach (RoleSettingsData m_RoleAlt : m_RolesAlt){
-                //     RoleSettingsData currentRoleAlt = m_RoleAlt;
-                //     string roleNameAlt = currentRoleAlt.GetName();
-                //     if (roleNameAlt == theRole){
-                //         roleMatchedAlt = currentRoleAlt;
-                //     }
-                // }
-                // if (roleMatchedAlt != null){
-                //     // TODO FIX COLOURS HERE
-                //     SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), roleMatchedAlt.GetColour());
-                // } else {
-                //     theRole="";
-                //     // TODO FIX COLOURS HERE
-                //     SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorDirectPlayer (), 0);
-                // }
+
              SetSchanaColour (GetSchanaModGlobalChatSettings ().GetColorDirect (), GetSchanaModGlobalChatSettings ().GetColorGlobalPlayer (), GetSchanaModGlobalChatSettings().GetColorAlert());
         } else {
             SetColour (GetSchanaModGlobalChatSettings ().GetColorServer ());
