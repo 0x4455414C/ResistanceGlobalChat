@@ -2,7 +2,6 @@ modded class MissionServer extends MissionBase {
     override void OnInit () {
         super.OnInit ();
 		Print ("[SchanaChat] OnInit");
-		// GetSchanaModGlobalChatServerSettings ();
 		GetResistanceChatSettings();
 		GetRPCManager ().AddRPC ( "SchanaChat", "SchanaChatSettingsRPC", this, SingeplayerExecutionType.Both );
 		GetRPCManager ().AddRPC ( "SchanaChat", "SchanaRoleColoursRPC", this, SingeplayerExecutionType.Both );
