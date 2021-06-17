@@ -10,7 +10,7 @@ modded class MissionGameplay extends MissionBase {
 		super.OnMissionStart ();
 		Print ("[SchanaChat] Requesting settings from server");
 		GetRPCManager ().SendRPC ("SchanaChat", "SchanaChatSettingsRPC", new Param1< ResistanceChatSettings >( NULL ), true, NULL);
-        GetRPCManager ().SendRPC ("SchanaChat", "SchanaRoleColoursRPC", new Param1< array<RoleSettingsData> >( NULL ), true, NULL);
+        GetRPCManager ().SendRPC ("SchanaChat", "SchanaRoleColoursRPC", new Param1< array<ref RoleSettingsData> >( NULL ), true, NULL);
 	}
 	
 	void SchanaChatSettingsRPC ( CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target ) {
@@ -24,7 +24,7 @@ modded class MissionGameplay extends MissionBase {
 	}
 
     void SchanaRoleColoursRPC (CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target ) {
-        Param1< array<RoleSettingsData> > data  //Player ID, Icon
+        Param1< array<ref RoleSettingsData> > data  //Player ID, Icon
 		if ( !ctx.Read ( data ) ) return;
 		
 		Print ("[SchanaChat] Receiving roles from server");
